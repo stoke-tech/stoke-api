@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Request submitted by, <%= @request.name %></h1>
+    <p>
+      Their message: <%= @request.text %>
+    </p>
+    <p>
+      Try to contact them within 3 days.
+    </p>
+    <p>Email: <%= @request.email %></p>
+    <p>Phone: <%= @request.phone %></p>
+    <p><em>The Stoketech Team</em></p>
+  </body>
+</html>
