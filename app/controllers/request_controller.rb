@@ -5,6 +5,12 @@ class RequestController < ApplicationController
     render json: @requests
   end
 
+  def show
+    @request = Request.find_by(id: params[:id])
+
+    render json: @request
+  end
+
   def create
     @request = Request.new(request_params)
 

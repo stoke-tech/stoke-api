@@ -6,20 +6,25 @@
 #
 default: &default
   adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
 
 development:
-  <<: sqlite3
-  database: db/development.sqlite3
+  <<: *default
+  database: stoke_api_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: sqlite3
-  database: db/test.sqlite3
+  <<: *default
+  database: stoke_api_test
 
 production:
   <<: *default
-  database: db/production.pg
+  database: stoke_api_production
+  
