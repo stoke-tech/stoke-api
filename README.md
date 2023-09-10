@@ -1,24 +1,15 @@
-# README
+# Stoke API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This repository stores the back-end code for the StokeTech website.
 
-Things you may want to cover:
+## Introduction
 
-* Ruby version
+This application is built on Rails 7 and Ruby 3.1. It uses Postgresql for the database. A `postman_requests.json` file is included to import into an API client.
 
-* System dependencies
+## Setup
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Clone the repo
+2. `cd` into `stoke-api`
+3. Set `DATABASE_USER` and `DATABASE_PASSWORD` as environment variables. These should be the data you authenticate into your local Postgresql instance with.
+4. Run `bundle install`
+5. Run `rails s`
