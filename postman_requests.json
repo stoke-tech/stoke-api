@@ -12,14 +12,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/request",
-					"protocol": "http",
+					"raw": "{{baseUrl}}request",
 					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"request"
+						"{{baseUrl}}request"
 					]
 				}
 			},
@@ -32,7 +27,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Janet Lawson\",\n    \"email\": \"janet.lawson@gmail.com\",\n    \"phone\": \"123-456-3234\",\n    \"text\": \"I am interested in what you're selling.\"\n}",
+					"raw": "{\n    \"name\": \"Zach Baird\",\n    \"email\": \"zdb1994@yahoo.com\",\n    \"phone\": \"123-456-3234\",\n    \"text\": \"I am interested in what you're selling.\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -40,14 +35,9 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/request",
-					"protocol": "http",
+					"raw": "{{baseUrl}}request",
 					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"request"
+						"{{baseUrl}}request"
 					]
 				}
 			},
@@ -59,19 +49,43 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/request/1",
-					"protocol": "http",
+					"raw": "{{baseUrl}}request/1",
 					"host": [
-						"localhost"
+						"{{baseUrl}}request"
 					],
-					"port": "3000",
 					"path": [
-						"request",
 						"1"
 					]
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000/",
+			"type": "string"
 		}
 	]
 }
