@@ -12,7 +12,12 @@ class RequestController < ApplicationController
   end
 
   def create
-    if Request.exists?(email: request_params[:email])
+    if Request.exists?(
+      [
+        'email = ? AND status != ?',
+        request_params[:email], Request.statuses[:finished]
+      ]
+    )
       return render json: { message: 'User already has an active request.' }, status: :im_used
     end
 
