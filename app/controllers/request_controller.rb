@@ -1,26 +1,27 @@
 class RequestController < ApplicationController
   def index
-    @requests = Request.all
-
-    render json: @requests
+    requests = Request.all
+    render json: requests, status: :ok
   end
 
   def show
-    @request = Request.find_by(id: params[:id])
+    request = Request.find(params[:id])
+    return render json: request if request.present?
 
-    render json: @request
+    render status: :not_found
   end
 
   def create
-    @request = Request.new(request_params)
-
-    if @request.save
-      RequestMailer.with(request: @request).thank_you_email.deliver_later
-      RequestMailer.with(request: @request).request_submit_email.deliver_later
-      render json: @request
-    else
-      render json: @request.errors, status: :unprocessable_entity
+    if Request.exists?(email: request_params[:email])
+      return render json: { message: 'User already has an active request.' }, status: :im_used
     end
+
+    request = Request.create(request_params)
+    return render json: request.errors, status: :unprocessable_entity unless request.save
+
+    RequestMailer.with(request).thank_you_email.deliver_later
+    RequestMailer.with(request).request_submit_email.deliver_later
+    render json: request, status: :ok
   end
 
   private
