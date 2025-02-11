@@ -1,12 +1,12 @@
 class RequestController < ApplicationController
   def index
     @requests = Request.all
-    render json: requests, status: :ok
+    render json: @requests, status: :ok
   end
 
   def show
     @request = Request.find(params[:id])
-    return render json: request if request.present?
+    return render json: @request if request.present?
 
     render status: :not_found
   end
